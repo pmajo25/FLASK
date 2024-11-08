@@ -1,0 +1,31 @@
+<!-- divisas.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Calculadora de Divisas</h1>
+    <p>Ingresa la cantidad de dólares que deseas convertir a pesos colombianos.</p>
+    <form action="" method="POST">
+    
+        <div class="row">
+            <div class="col-md-12">
+                <input type="number" class="form-control" name="dolares" placeholder="Ingresa la cantidad en dólares" aria-label="Cantidad en dólares">
+            </div>
+        </div>
+    
+        <div class="row py-3">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Calcular</button>
+            </div>
+        </div>
+    
+    </form>
+
+    {% if total_pesos is not none %}
+    <div class="row py-2">
+        <div class="col">
+            <h3>Dólares ingresados: {{ dolares }}</h3>
+            <h3>El peso colombiano es: {{ total_pesos | round(2) }} COP</h3>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
