@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Juegos
+{% endblock %}
+
+{% block contenido %}
+<div class="container my-4">
+    <h1 class="text-light">Juegos</h1>
+
+    <!-- Botón para abrir el modal -->
+    <button type="button" class="btn11 btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarJuego">
+        Agregar juego
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAgregarJuego" tabindex="-1" aria-labelledby="modalAgregarJuegoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAgregarJuegoLabel">Agregar juego</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for('guardar_juego') }}" method="post">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input required type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción:</label>
+                            <input required type="text" class="form-control" placeholder="Descripción" name="descripcion" id="descripcion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="PrecioCompra" class="form-label">Precio de Compra:</label>
+                            <input required type="number" class="form-control" placeholder="PrecioCompra" name="PrecioCompra" id="PrecioCompra">
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

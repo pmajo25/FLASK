@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block titulo %} | Juegos {% endblock %}
+{% block contenido %}
+
+<div class="container my-4  main_full">
+    <div class="row">
+        <div class="col-md-10">
+            <h3 class="h3 text-light">Juegos</h3>
+
+            <!-- Botón para abrir el modal -->
+            <button type="button" class="btn3 btn-info mb-3" data-bs-toggle="modal" data-bs-target="#modalAgregarJuego">
+              <img src="static/img/mas.png" alt="">
+            </button>
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalAgregarJuego" tabindex="-1" aria-labelledby="modalAgregarJuegoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalAgregarJuegoLabel">Agregar juego</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url_for('guardar_juego') }}" method="post">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre:</label>
+                                    <input required type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label">Descripción:</label>
+                                    <input required type="text" class="form-control" placeholder="Descripción" name="descripcion" id="descripcion">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="PrecioCompra" class="form-label">Precio de Compra:</label>
+                                    <input required type="number" class="form-control" placeholder="PrecioCompra" name="PrecioCompra" id="PrecioCompra">
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn3 btn-info">Guardar</button>
+                                    <button type="button" class="btn1 btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalDetallesJuego" tabindex="-1" aria-labelledby="modalDetallesJuegoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalDetallesJuegoLabel">Detalles del Juego</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Nombre:</strong> <span id="detalleNombre"></span></p>
+                            <p><strong>Descripción:</strong> <span id="detalleDescripcion"></span></p>
+                            <p><strong>Precio de Compra:</strong> <span id="detallePrecio"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="modalEditarJuego" tabindex="-1" aria-labelledby="modalEditarJuegoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarJuegoLabel">Editar Juego</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url_for('actualizar_juego') }}" method="post" id="formEditarJuego">
+                                <input type="hidden" name="id" id="editId">
+                                <div class="mb-3">
+                                    <label for="editNombre" class="form-label">Nombre:</label>
+                                    <input required type="text" class="form-control" name="nombre" id="editNombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDescripcion" class="form-label">Descripción:</label>
+                                    <input required type="text" class="form-control" name="descripcion" id="editDescripcion">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editPrecioCompra" class="form-label">Precio de Compra:</label>
+                                    <input required type="number" class="form-control" name="PrecioCompra" id="editPrecioCompra">
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn3 btn-info">Actualizar</button>
+                                    <button type="button" class="btn1 btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabla de juegos -->
+            <div class="table-responsive rounded">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Descripción</th>
+                            <th class="text-center">PrecioCompra</th>
+                            <th class="text-center">Detalles</th>
+                            <th class="text-center">Editar</th>
+                            <th class="text-center">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for juego in juegos %}
+                        <tr>
+                            <td class="text-center">{{ juego[1] }}</td>
+                            <td class="text-center">{{ juego[2] }}</td>
+                            <td class="text-center">{{ juego[3] }}</td>
+                            <td class="text-center">
+                                <button 
+                                    class="btn2 btn-info btn-sm btn-detalles" 
+                                    data-id="{{ juego[0] }}"
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#modalDetallesJuego">
+                                    <img src="static/img/detalle.png" alt="" width="24px">
+                                </button>
+                            </td>
+                            
+                            <td class="d-flex justify-content-center align-items-center">
+                                <button
+                                    class="btn2 btn-info btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalEditarJuego"
+                                    data-id="{{ juego[0] }}"
+                                    data-nombre="{{ juego[1] }}"
+                                    data-descripcion="{{ juego[2] }}"
+                                    data-preciocompra="{{ juego[3] }}"
+                                >
+                                    <img src="static/img/editar.png" alt="" width="24px">
+                                </button>
+                            </td>
+                            <td class="text-center">
+                                <form action="{{ url_for('eliminar_juego') }}" method="POST" class="d-inline">
+                                    <input type="hidden" name="id" value="{{ juego[0] }}">
+                                    <button class="btn1 btn-danger btn-sm"> <img src="static/img/eliminar.png" alt="" width="24px"></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../static/js/juegos.js"></script>
+{% endblock %}
