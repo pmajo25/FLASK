@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanta</title>
+    <link rel="icon" type="static/img/fanta1.webp" href="static/img/fanta1.webp" >
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: rgb(228,202,84);
+            background: linear-gradient(133deg, rgba(228,202,84,1) 0%, rgba(233,116,38,1) 99%);
+            color: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 15px;
+            border-bottom: 1px solid white;
+        }
+        .sidebar ul li:hover {
+            background: rgb(248, 239, 239);
+            cursor: pointer;
+        }
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .header {
+            background: rgb(228,202,84);
+            background: linear-gradient(133deg, rgba(228,202,84,1) 0%, rgba(233,116,38,1) 99%);
+            padding: 15px;
+            text-align: center;
+            color: dark;
+            font-size: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .stats .box {
+            background: rgb(228,202,84);
+            background: linear-gradient(133deg, rgba(228,202,84,1) 0%, rgba(233,116,38,1) 99%);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 30%;
+            color: black;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .stats .box img {
+            max-width: 50px;
+            margin-bottom: 10px;
+        }
+        .logo {
+            display: block;
+            width: 150px;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="static/img/fanta1.webp" class="logo">
+        <ul>
+            <li>Inicio
+            <img src="img/home (1).png"></li>
+            <li>Ventas
+                <img src="img/ventas.png"></li>
+            <li>Productos
+                <img src="img/producto.png"></li>
+            <li>Clientes
+                <img src="img/clientes.png"></li>
+            <li>Configuración
+                <img src="img/confi.png"></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header">Dashboard Fanta</div>
+        <div class="stats">
+            <div class="box"> 
+                <div>
+                    <img src="img/vmensual.png">
+                </div>
+                Ventas Mensuales: $50,000
+            </div>
+            <div class="box"> 
+                <div>
+                    <img src="img/pro.png">
+                </div>
+                Productos Disponibles: 120
+            </div>
+            <div class="box"> 
+                <div>
+                    <img src="img/clientesactivos.png">
+                </div>
+                Clientes Activos: 300
+            </div>
+        </div>
+    </div>
+</body>
+</html>
