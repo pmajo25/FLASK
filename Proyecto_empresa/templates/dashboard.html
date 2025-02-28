@@ -1,124 +1,88 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fanta</title>
-    <link rel="icon" type="static/img/fanta1.webp" href="static/img/fanta1.webp" >
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .sidebar {
-            width: 250px;
-            background: rgb(228,202,84);
-            background: linear-gradient(133deg, rgba(228,202,84,1) 0%, rgba(233,116,38,1) 99%);
-            color: black;
-            padding: 20px;
-            height: 100vh;
-            position: fixed;
-        }
-        .sidebar h2 {
-            text-align: center;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            padding: 15px;
-            border-bottom: 1px solid white;
-        }
-        .sidebar ul li:hover {
-            background: rgb(248, 239, 239);
-            cursor: pointer;
-        }
-        .main-content {
-            margin-left: 270px;
-            padding: 20px;
-            flex-grow: 1;
-        }
-        .header {
-            background: rgb(228,202,84);
-            background: linear-gradient(133deg, rgba(228,202,84,1) 0%, rgba(233,116,38,1) 99%);
-            padding: 15px;
-            text-align: center;
-            color: dark;
-            font-size: 40px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-        .stats .box {
-            background: rgb(228,202,84);
-            background: linear-gradient(133deg, rgba(228,202,84,1) 0%, rgba(233,116,38,1) 99%);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            width: 30%;
-            color: black;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .stats .box img {
-            max-width: 50px;
-            margin-bottom: 10px;
-        }
-        .logo {
-            display: block;
-            width: 150px;
-            margin: 0 auto 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <img src="static/img/fanta1.webp" class="logo">
-        <ul>
-            <li>Inicio
-            <img src="img/home (1).png"></li>
-            <li>Ventas
-                <img src="img/ventas.png"></li>
-            <li>Productos
-                <img src="img/producto.png"></li>
-            <li>Clientes
-                <img src="img/clientes.png"></li>
-            <li>Configuración
-                <img src="img/confi.png"></li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <div class="header">Dashboard Fanta</div>
-        <div class="stats">
-            <div class="box"> 
-                <div>
-                    <img src="img/vmensual.png">
+{% extends "base.html" %}
+{% block title %} categoria {% endblock %}
+{% block content %}
+
+<div class="container text-center mt-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="custom-card p-3 border shadow">
+                <img src="/static/img/categoriafanta.jpg" class="custom-card-img object-fit-cover" alt="Fanta Naranja"
+                    width="500px" height="300px">
+                <div class="card-body"><br>
+                    <h3 class="card-title">Categoría</h3>
+                    <p>Explora todas nuestras categorías</p>
+                    <a href="/categoria" class="btn btn-primary mt-3">Gestionar categorías</a>
                 </div>
-                Ventas Mensuales: $50,000
-            </div>
-            <div class="box"> 
-                <div>
-                    <img src="img/pro.png">
-                </div>
-                Productos Disponibles: 120
-            </div>
-            <div class="box"> 
-                <div>
-                    <img src="img/clientesactivos.png">
-                </div>
-                Clientes Activos: 300
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="custom-card p-3 border shadow">
+                <img src="static/img/empleados.avif" class="custom-card-img object-fit-cover" alt="Fanta Uva"
+                    width="500px" height="300px">
+                <div class="card-body"><br>
+                    <h3 class="card-title">Empleados</h3>
+                    <p>Administra la información de los empleados de la empresa.</p>
+                    <a href="/empleados" class="btn btn-primary mt-3">Gestionar empleados</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="custom-card p-3 border shadow">
+                <img src="static/img/clientes.webp" class="custom-card-img object-fit-cover" alt="Fanta Manzana"
+                    width="500px" height="300px">
+                <div class="card-body"><br>
+                    <h3 class="card-title">Clientes</h3>
+                    <p>Consulta y gestiona la base de datos de clientes.</p>
+                    <a href="/clientes" class="btn btn-primary mt-3">Gestionar clientes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="custom-card p-3 border shadow">
+                <img src="static/img/productofanta.webp" class="custom-card-img" alt="Fanta Fresa" width="500px"
+                    height="300px">
+                <div class="card-body"><br>
+                    <h3 class="card-title">Productos</h3>
+                    <p>Administra el catálogo de productos disponibles.</p>
+                    <a href="#" class="btn btn-primary mt-3">Gestionar productos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="custom-card p-3 border shadow">
+                <img src="static/img/Sucursales.jpg" class="custom-card-img" alt="Fanta Fresa" width="500px"
+                    height="300px">
+                <div class="card-body"><br>
+                    <h3 class="card-title">Sucursales</h3>
+                    <p>Administra el catálogo de productos disponibles.</p>
+                    <a href="/sucursales" class="btn btn-primary mt-3">Gestionar sucursales</a>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-</body>
-</html>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('verSaboresBtn')?.addEventListener('click', function () {
+        var modal = new bootstrap.Modal(document.getElementById('saboresModal'), { backdrop: false });
+        modal.show();
+    });
+</script>
+</div>
+
+<footer class="w-100 text-center bg-dark text-white py-3 mt-5">
+    <h3 class="mb-2">Todos los derechos reservados</h3>
+    <p class="m-0">© 2024 Daily Rodríguez, María Paternina & Valentina Zuñiga</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+<script src="static/js/script.js"></script>
+{% endblock %}

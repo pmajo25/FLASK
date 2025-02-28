@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} categoria {% endblock %}
+{% block content %}
+
+<body>
+    <main>
+        <section class="panel">
+            <h1>Sucursales</h1>
+            <p>¡Bienvenido al Panel de Sucursales!</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Sucursal</th>
+                        <th>N° de Sucursal</th>
+                        <th>Capacidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Guacarí</strong></td>
+                        <td>2</td>
+                        <td>149</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Viva Sincelejo</strong></td>
+                        <td>1</td>
+                        <td>109</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="total">2 Sucursales.</p>
+        </section>
+    </main>
+
+
+</body>
+{% endblock %}

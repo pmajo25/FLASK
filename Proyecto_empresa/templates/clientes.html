@@ -1,0 +1,116 @@
+{% extends "base.html" %} 
+{% block title %} categoria {% endblock %} 
+{% block content %}
+
+<main>
+    <section class="clientes">
+        <h1>Clientes</h1>
+        <p>¡Bienvenido al Panel de Clientes!</p>
+
+        <button class="btn-add">+ Añadir Cliente</button>
+
+        <div class="tabla-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Identificación</th>
+                        <th>Nombres y Apellidos</th>
+                        <th>Categoría</th>
+                        <th>Estado</th>
+                        <th>Empleado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>00128</td>
+                        <td>Sarai Fuentes Pertuz</td>
+                        <td>Polos</td>
+                        <td>Activo</td>
+                        <td>Katty Saenz Moron</td>
+                        <td>
+                            <button class="btn-update">Actualizar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1131</td>
+                        <td>Pablo Velez Altamiranda</td>
+                        <td>Pantalones</td>
+                        <td>Activo</td>
+                        <td>Katty Saenz Moron</td>
+                        <td>
+                            <button class="btn-update">Actualizar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>12345</td>
+                        <td>Maria Paula</td>
+                        <td>Vestidos</td>
+                        <td>297</td>
+                        <td>Avelina Alfaro</td>
+                        <td>
+                            <button class="btn-update">Actualizar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>19991</td>
+                        <td>Sofia Beleño Castro</td>
+                        <td>Pantalones</td>
+                        <td>Activo</td>
+                        <td>N/A</td>
+                        <td>
+                            <button class="btn-update">Actualizar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>54321</td>
+                        <td>William Alvarez Quiroz</td>
+                        <td>Camisetas</td>
+                        <td>Activo</td>
+                        <td>N/A</td>
+                        <td>
+                            <button class="btn-update">Actualizar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>55739</td>
+                        <td>Sarah Sanchez Voz</td>
+                        <td>Vestidos</td>
+                        <td>Activo</td>
+                        <td>N/A</td>
+                        <td>
+                            <button class="btn-update">Actualizar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>76543</td>
+                        <td>Ana Maria Del Mar Rios</td>
+                        <td>Camisas</td>
+                        <td>Activo</td>
+                        <td>Katty Saenz Moron</td>
+                        <td>
+                            <button class="btn-update">Actualizar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="total">7 Registros.</p>
+        </div>
+    </section>
+</main>
+{% endblock %}

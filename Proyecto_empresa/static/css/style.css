@@ -134,9 +134,174 @@ h1 {
     text-align: center;
 }
 
+.mt-3 {
+    margin-top: 10px;
+}
 
+/* Estilos generales */
+.categoria, .productos, .empleados, .clientes {
+    background: #e3e8e3;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+}
 
+h1, h2 {
+    font-size: 1.8em;
+}
 
+.tabla-container {
+    background: #fff;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
 
+.btn {
 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+     text-decoration: none;
+}
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.total {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo1 {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: black;
+}
+
+.recover-container {
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+}
+
+.body1{
+    background: url(static/img/fanta2.webp) no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.register-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(30px);
+    border: 2px solid rgba(255, 255, 255, .2);
+}
+
+main {
+    text-align: center;
+    padding: 40px;
+}
+
+.panel {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: auto;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f9fa;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.total {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.heart {
+    color: red;
+}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %} categoria {% endblock %}
+{% block content %}
+
+<main>
+    <section class="empleados">
+        <h1>Empleados</h1>
+        <p>¡Bienvenido al Panel de control de Empleados!</p>
+        <button class="btn">+ Añadir Empleado</button>
+
+        <div class="tabla-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>N° de Identificación</th>
+                        <th>Nombre y Apellidos</th>
+                        <th>Categoría</th>
+                        <th>Salario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>10101</td>
+                        <td>Avelina Alfaro</td>
+                        <td>Polos</td>
+                        <td>3,500,000.00</td>
+                        <td>
+                            <button class="actualizar">Actualizar</button>
+                            <button class="eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1102798</td>
+                        <td>Carlos Alfaro</td>
+                        <td>Vestidos</td>
+                        <td>2,780,000.00</td>
+                        <td>
+                            <button class="actualizar">Actualizar</button>
+                            <button class="eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>12121</td>
+                        <td>Winner Acosta Lastre</td>
+                        <td>Vestidos</td>
+                        <td>2,900,000.00</td>
+                        <td>
+                            <button class="actualizar">Actualizar</button>
+                            <button class="eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                    <!-- Agrega más empleados según sea necesario -->
+                </tbody>
+            </table>
+            <p class="total">12 Registros.</p>
+        </div>
+    </section>
+</main>
+
+
+{% endblock %}

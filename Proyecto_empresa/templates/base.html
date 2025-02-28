@@ -5,25 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FANTA {% block titulo %}{% endblock %}</title>
-    <link rel="icon" type="static/img/fanta1.webp" href="static/img/fanta1.webp">
+    <title>FANTA</title>
+    <link rel="icon" type="image/webp" href="{{ url_for('static', filename='img/fanta1.webp') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 
 <body>
-    <video class="video-background" autoplay muted loop>
-        <source src="static/img/videito.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de videos.
-    </video>
-
+    {% block titulo %}{% endblock %}
     <div class="content">
         <nav class="navbar navbar-expand-lg bg-transparent border-body flex-sm-fill" data-bs-theme="light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img alt="Logo" src="static/img/fanta1.webp" style="max-height: 80px;" class="rounded-circle">
+                    <img alt="Logo" src="{{ url_for('static', filename='img/fanta1.webp') }}" style="max-height: 80px;" class="rounded-circle">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -42,104 +38,26 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" href="#">Promociones</a>
                         </li>
-                       
                     </ul>
                     <div class="d-flex ms-3">
-                        <a href="login" class="btn btn-primary rounded-5">
+                        <a href="{{ url_for('login') }}" class="btn btn-primary rounded-5">
                             <strong>Iniciar Sesión</strong>
                         </a>
                     </div>
                 </div>
             </div>
         </nav>
-
-        <section class="hero text-center text-white">
-            <h1>Diseño Refrescante, Tan Único Como Fanta</h1>
-            <h6 class="mb-4">Así como Fanta transforma lo ordinario en algo vibrante y lleno de sabor, el diseño web puede hacer lo mismo.</h6>
-        </section>
-
-        <section class="cards d-flex justify-content-center gap-4 my-4">
-            <div class="card" style="width: 18rem;">
-                <img src="static/img/5.jpg" class="card-img-top" alt="Diseño 1">
-                <div class="card-body">
-                    <h6 class="card-title">"Fanta es la bebida que transforma cualquier momento en una explosión de sabor y diversión."</h6>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="static/img/hola.jpg" class="card-img-top" alt="Diseño 2">
-                <div class="card-body">
-                    <h6 class="card-title">"Con Fanta, cada sorbo es una invitación a dejarte llevar por la alegría y la frescura."</h6>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="static/img/jogo.webp" class="card-img-top" alt="Diseño 3">
-                <div class="card-body">
-                    <h6 class="card-title">"Fanta es más que una bebida, es una forma de vivir la diversión al máximo."</h6>
-                </div>
-            </div>
-        </section>
-        <section class="text-center py-5 text-white">
-            <h2>Sabores disponibles</h2>
-            <form class="d-flex justify-content-center">
-                <button type="button" class="btn btn-warning" id="verSaboresBtn">Ver sabores</button> 
-            </form>
-            <br>
-            <h5>"¡Inicia sesión en Fanta y crea tu combinación perfecta! Accede ahora para elegir y mezclar tus sabores favoritos. ¡Tu refresco ideal te espera!".</h5>
-        </section>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="saboresModal" tabindex="-1" aria-labelledby="saboresModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content" style="color: #fff; border-radius: 10px;">
-                    <div class="modal-header" style="background-color: #ff7300; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                        <h4 class="modal-title " id="saboresModalLabel" ><b>Sabores disponibles</b></h4>
-                    </div>
-                    
-                    <div class="modal-body"  style="color: #333";>
-                        <ol>
-                            <li><img src="static/img/cereza.png" alt="" width="20px"> (Cereza)</li>
-                            <li><img src="static/img/fresa.png" alt="" width="20px"> (Fresa)</li>
-                            <li><img src="static/img/limon.png" alt="" width="20px"> (Limón)</li>
-                            <li><img src="static/img/mango.png" alt="" width="20px"> (Mango)</li>
-                            <li><img src="static/img/manzana.png" alt="" width="20px"> (Manzana)</li>
-                            <li><img src="static/img/melon.png" alt="" width="20px"> (Melón)</li>
-                            <li><img src="static/img/naranja.png" alt="" width="20px"> (Naranja)</li>
-                            <li><img src="static/img/piña.png" alt="" width="20px"> (Piña)</li>
-                            <li><img src="static/img/sandia.png" alt="" width="20px"> (Sandía)</li>
-                            <li><img src="static/img/uva.png" alt="" width="20px"> (Uva)</li>
-                        </ol>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <!-- Bootstrap JS (asegúrate de incluirlo) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-        document.getElementById('verSaboresBtn').addEventListener('click', function() {
-            var modal = new bootstrap.Modal(document.getElementById('saboresModal'), { backdrop: false });
-            modal.show();
-        });
-        </script>
-        
-        
-
     </div>
+    
+    {% block content %}{% endblock %}
 
     <footer class="w-100 text-center bg-dark text-white py-3">
         <h3 class="mb-2">Todos los derechos reservados</h3>
         <p class="m-0">© 2024 Daily Rodríguez, María Paternina & Valentina Zuñiga</p>
     </footer>
     
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
-
 
 </html>
