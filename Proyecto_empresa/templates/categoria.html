@@ -1,58 +1,62 @@
 {% extends "base.html" %} 
-{% block title %} categoria {% endblock %} 
+{% block title %} Categoría {% endblock %} 
 {% block content %}
-    <main>
-        <section class="categoria">
-            <h1>Categoría</h1>
-            <p>¡Bienvenido a producto por categoría fanta!</p>
-        </section>
+    <main class="container-fluid text-dark py-5 min-vh-100">
+        <div class="container">
+            <section class="text-center mb-4">
+                <h1 class="fw-bold">Categoría</h1>
+                <p class="fs-5">¡Bienvenido a producto por categoría Fanta!</p>
+            </section>
 
-        <section class="productos">
-            <h2>Productos</h2>
-            <div class="tabla-container">
-                <button class="btn">+ Añadir Producto</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Referencia</th>
-                            <th>Descripción</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>FANTA-001</td>
-                            <td>Fanta Naranja 500ml</td>
-                            <td>3,500</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>FANTA-002</td>
-                            <td>Fanta Uva 1.5L</td>
-                            <td>7,200</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>FANTA-003</td>
-                            <td>Fanta Manzana 2L</td>
-                            <td>9,500</td>
-                        </tr>
-                    </tbody>
-                    
-                </table>
-                <p class="total">3 Productos</p>
+            <section class="productos bg-light text-dark p-4 rounded shadow">
+                <h2 class="text-center">Productos</h2>
+                <div class="table-responsive mt-3">
+                    <button class="btn btn-primary mb-3">+ Añadir Producto</button>
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Referencia</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>FANTA-001</td>
+                                <td>Fanta Naranja 500ml</td>
+                                <td>$3,500</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>FANTA-002</td>
+                                <td>Fanta Uva 1.5L</td>
+                                <td>$7,200</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>FANTA-003</td>
+                                <td>Fanta Manzana 2L</td>
+                                <td>$9,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <section class="empleados bg-light text-dark p-4 rounded shadow">
+                        <h2 class="text-center">Empleados</h2>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="clientes bg-light text-dark p-4 rounded shadow">
+                        <h2 class="text-center">Clientes</h2>
+                    </section>
+                </div>
             </div>
-        </section>
-
-        <section class="empleados">
-            <h2>Empleados</h2>
-        </section>
-
-        <section class="clientes">
-            <h2>Clientes</h2>
-        </section>
+        </div>
     </main>
-
 {% endblock %}

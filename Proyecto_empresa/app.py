@@ -119,6 +119,10 @@ def clientes():
 def sucursales():
     return render_template('sucursales.html')
 
+@app.route('/productos')
+def productos():
+    return render_template('productos.html')
+
 # Crear la base de datos
 with app.app_context():
     db.create_all()

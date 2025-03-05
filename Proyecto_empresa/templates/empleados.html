@@ -1,21 +1,24 @@
 {% extends "base.html" %}
-{% block title %} categoria {% endblock %}
+{% block title %} Empleados {% endblock %}
 {% block content %}
 
-<main>
+<main class="container mt-4">
     <section class="empleados">
-        <h1>Empleados</h1>
-        <p>¡Bienvenido al Panel de control de Empleados!</p>
-        <button class="btn">+ Añadir Empleado</button>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="text-dark">Empleados</h1>
+            <button class="btn btn-success">+ Añadir Empleado</button>
+        </div>
 
-        <div class="tabla-container">
-            <table>
-                <thead>
+        <p class="text-muted">¡Bienvenido al Panel de control de Empleados de Fanta!</p>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
                     <tr>
                         <th>#</th>
                         <th>N° de Identificación</th>
                         <th>Nombre y Apellidos</th>
-                        <th>Categoría</th>
+                        <th>Cargo</th>
                         <th>Salario</th>
                         <th>Acciones</th>
                     </tr>
@@ -23,44 +26,41 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>10101</td>
-                        <td>Avelina Alfaro</td>
-                        <td>Polos</td>
-                        <td>3,500,000.00</td>
+                        <td>5001</td>
+                        <td>Andrés López</td>
+                        <td>Gerente de Ventas</td>
+                        <td>$4,200,000.00</td>
                         <td>
-                            <button class="actualizar">Actualizar</button>
-                            <button class="eliminar">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>1102798</td>
-                        <td>Carlos Alfaro</td>
-                        <td>Vestidos</td>
-                        <td>2,780,000.00</td>
+                        <td>5002</td>
+                        <td>Mariana Torres</td>
+                        <td>Supervisora de Producción</td>
+                        <td>$3,800,000.00</td>
                         <td>
-                            <button class="actualizar">Actualizar</button>
-                            <button class="eliminar">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>12121</td>
-                        <td>Winner Acosta Lastre</td>
-                        <td>Vestidos</td>
-                        <td>2,900,000.00</td>
+                        <td>5003</td>
+                        <td>Carlos Mendoza</td>
+                        <td>Operario de Planta</td>
+                        <td>$2,500,000.00</td>
                         <td>
-                            <button class="actualizar">Actualizar</button>
-                            <button class="eliminar">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
-                    <!-- Agrega más empleados según sea necesario -->
                 </tbody>
             </table>
-            <p class="total">12 Registros.</p>
         </div>
     </section>
 </main>
-
 
 {% endblock %}

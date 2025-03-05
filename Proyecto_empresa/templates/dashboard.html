@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block title %} categoria {% endblock %}
+{% block title %} Dashboard {% endblock %}
 {% block content %}
 
-<div class="container text-center mt-5">
+<div class="container text-center my-4">
     <div class="row g-4">
         <div class="col-md-6">
             <div class="custom-card p-3 border shadow">
@@ -47,42 +47,41 @@
                 <div class="card-body"><br>
                     <h3 class="card-title">Productos</h3>
                     <p>Administra el catálogo de productos disponibles.</p>
-                    <a href="#" class="btn btn-primary mt-3">Gestionar productos</a>
+                    <a href="/productos" class="btn btn-primary mt-3">Gestionar productos</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="custom-card p-3 border shadow">
-                <img src="static/img/Sucursales.jpg" class="custom-card-img" alt="Fanta Fresa" width="500px"
-                    height="300px">
-                <div class="card-body"><br>
-                    <h3 class="card-title">Sucursales</h3>
-                    <p>Administra el catálogo de productos disponibles.</p>
-                    <a href="/sucursales" class="btn btn-primary mt-3">Gestionar sucursales</a>
+        <div class="container text-center my-4">
+            <div class="row g-4">
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="custom-card p-3 border shadow flex-grow-1">
+                        <img src="static/img/Sucursales.jpg" class="custom-card-img" alt="Fanta Sucursales" width="500px"
+                            height="300px">
+                        <div class="card-body"><br>
+                            <h3 class="card-title">Sucursales</h3>
+                            <p>Administra el catálogo de productos disponibles.</p>
+                            <a href="/sucursales" class="btn btn-primary mt-3">Gestionar sucursales</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                    <div>
+                        <h3 class="text-primary">Fanta - Oficina Principal</h3>
+                        <p><strong>Dirección:</strong> Calle 123 #45-67, Ciudad Fanta</p>
+                        <p><strong>Teléfono:</strong> +57 320 456 7890</p>
+                        <p><strong>Email:</strong> contacto@fanta.com</p>
+                        <p><strong>Horario:</strong> Lunes a Viernes, 8:00 AM - 6:00 PM</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    document.getElementById('verSaboresBtn')?.addEventListener('click', function () {
-        var modal = new bootstrap.Modal(document.getElementById('saboresModal'), { backdrop: false });
-        modal.show();
-    });
-</script>
-</div>
-
-<footer class="w-100 text-center bg-dark text-white py-3 mt-5">
-    <h3 class="mb-2">Todos los derechos reservados</h3>
-    <p class="m-0">© 2024 Daily Rodríguez, María Paternina & Valentina Zuñiga</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="static/js/script.js"></script>
+
 {% endblock %}

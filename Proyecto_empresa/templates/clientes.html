@@ -1,116 +1,118 @@
-{% extends "base.html" %} 
-{% block title %} categoria {% endblock %} 
+{% extends "base.html" %}
+{% block title %} Clientes {% endblock %}
 {% block content %}
 
-<main>
+<main class="container mt-4">
     <section class="clientes">
-        <h1>Clientes</h1>
-        <p>¡Bienvenido al Panel de Clientes!</p>
+        <div class="d-flex flex-column justify-content-center align-items-center mb-3">
+            <h1 class="text-dark text-center">Clientes</h1>
+            <button class="btn btn-success mt-2">+ Añadir Cliente</button>
+        </div>
 
-        <button class="btn-add">+ Añadir Cliente</button>
+        <p class="text-muted text-center">¡Bienvenido al Panel de Clientes de Fanta!</p>
 
-        <div class="tabla-container">
-            <table>
-                <thead>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover text-center">
+                <thead class="table-dark">
                     <tr>
                         <th>#</th>
                         <th>Identificación</th>
                         <th>Nombres y Apellidos</th>
-                        <th>Categoría</th>
+                        <th>Tipo de Cliente</th>
                         <th>Estado</th>
-                        <th>Empleado</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>00128</td>
-                        <td>Sarai Fuentes Pertuz</td>
-                        <td>Polos</td>
-                        <td>Activo</td>
-                        <td>Katty Saenz Moron</td>
+                        <td>1001</td>
+                        <td>Laura Fernández</td>
+                        <td>Mayorista</td>
+                        <td><span class="badge bg-success">Activo</span></td>
+                        <td>Daniel Ríos</td>
                         <td>
-                            <button class="btn-update">Actualizar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>1131</td>
-                        <td>Pablo Velez Altamiranda</td>
-                        <td>Pantalones</td>
-                        <td>Activo</td>
-                        <td>Katty Saenz Moron</td>
+                        <td>1002</td>
+                        <td>Carlos Gómez</td>
+                        <td>Distribuidor</td>
+                        <td><span class="badge bg-success">Activo</span></td>
+                        <td>Mariana López</td>
                         <td>
-                            <button class="btn-update">Actualizar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>12345</td>
-                        <td>Maria Paula</td>
-                        <td>Vestidos</td>
-                        <td>297</td>
-                        <td>Avelina Alfaro</td>
+                        <td>1003</td>
+                        <td>Andrea Castillo</td>
+                        <td>Minorista</td>
+                        <td><span class="badge bg-danger">Inactivo</span></td>
+                        <td>Pedro Martínez</td>
                         <td>
-                            <button class="btn-update">Actualizar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>19991</td>
-                        <td>Sofia Beleño Castro</td>
-                        <td>Pantalones</td>
-                        <td>Activo</td>
+                        <td>1004</td>
+                        <td>Juan Pérez</td>
+                        <td>Mayorista</td>
+                        <td><span class="badge bg-success">Activo</span></td>
                         <td>N/A</td>
                         <td>
-                            <button class="btn-update">Actualizar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>54321</td>
-                        <td>William Alvarez Quiroz</td>
-                        <td>Camisetas</td>
-                        <td>Activo</td>
+                        <td>1005</td>
+                        <td>Fernanda Díaz</td>
+                        <td>Distribuidor</td>
+                        <td><span class="badge bg-success">Activo</span></td>
                         <td>N/A</td>
                         <td>
-                            <button class="btn-update">Actualizar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>55739</td>
-                        <td>Sarah Sanchez Voz</td>
-                        <td>Vestidos</td>
-                        <td>Activo</td>
+                        <td>1006</td>
+                        <td>Ricardo López</td>
+                        <td>Minorista</td>
+                        <td><span class="badge bg-success">Activo</span></td>
                         <td>N/A</td>
                         <td>
-                            <button class="btn-update">Actualizar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td>76543</td>
-                        <td>Ana Maria Del Mar Rios</td>
-                        <td>Camisas</td>
-                        <td>Activo</td>
-                        <td>Katty Saenz Moron</td>
+                        <td>1007</td>
+                        <td>Sofía Márquez</td>
+                        <td>Distribuidor</td>
+                        <td><span class="badge bg-success">Activo</span></td>
+                        <td>Mariana López</td>
                         <td>
-                            <button class="btn-update">Actualizar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Actualizar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <p class="total">7 Registros.</p>
         </div>
     </section>
 </main>
+
 {% endblock %}

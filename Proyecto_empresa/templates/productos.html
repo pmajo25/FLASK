@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %} Categoría {% endblock %}
+{% block content %}
+
+<main class="container mt-4">
+    <section class="productos">
+        <div class="d-flex flex-column justify-content-center align-items-center mb-3">
+            <h1 class="text-dark text-center">Productos</h1>
+            <p class="text-muted text-center">¡Bienvenido al Panel de Productos de Fanta!</p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Producto</th>
+                        <th>Referencia</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Fanta Naranja 500ml</td>
+                        <td>F-500N</td>
+                        <td>$3,500</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Fanta Uva 1.5L</td>
+                        <td>F-1500U</td>
+                        <td>$7,000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Fanta Fresa 600ml</td>
+                        <td>F-600F</td>
+                        <td>$4,200</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Fanta Tropical 2L</td>
+                        <td>F-2000T</td>
+                        <td>$9,500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

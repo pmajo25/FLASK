@@ -1,21 +1,19 @@
 {% extends "base.html" %}
-{% block title %} categoria {% endblock %}
+{% block title %} login {% endblock %}
 {% block content %}
-<body1>
-    <div class="recover-container m-2">
-        <img src="static/img/fanta1.webp" alt="Fanta Logo" class="logo1">
-        <h3 class="text-dark">Recuperación de Cuenta</h3>
-        <p class="text-dark">Ingresa tu correo electrónico para recibir un enlace de recuperación.</p>
-        <form>
-            <div class="mb-3">
-                <label for="email" class="form-label text-dark">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Enviar codigo de recuperación</button>
-        </form>
-        <div class="text-center mt-3">
-            <a href="/login">Volver al inicio de sesión</a>
+<div class="recover-container m-2">
+    <img src="static/img/fanta1.webp" alt="Fanta Logo" class="logo1">
+    <h3 class="text-dark">Recuperación de Cuenta</h3>
+    <p class="text-dark">Ingresa tu correo electrónico para recibir un enlace de recuperación.</p>
+    <form>
+        <div class="mb-3">
+            <label for="email" class="form-label text-dark">Correo Electrónico</label>
+            <input type="email" class="form-control" id="email" required>
         </div>
+        <button type="submit" class="btn btn-primary w-100">Enviar codigo de recuperación</button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="/login">Volver al inicio de sesión</a>
     </div>
-</body>
+</div>
 {% endblock %}
