@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+{% block title %} Clientes {% endblock %}
+
+{% block content %}
+<main class="container-fluid text-dark py-5 min-vh-100">
+    <div class="container">
+        <!-- Modal para agregar cliente -->
+        <div class="modal fade" id="modalAgregarCliente" tabindex="-1" aria-labelledby="modalAgregarClienteLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAgregarClienteLabel">Agregar Nuevo Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario dentro del modal -->
+                        <!-- Formulario dentro del modal -->
+                        <form method="POST" action="{{ url_for('agregar_cliente') }}">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="identificacion"
+                                        class="fw-bold text-start d-block">Identificación:</label>
+                                    <input type="text" class="form-control border" name="identificacion"
+                                        placeholder="Identificación" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="nombres" class="fw-bold text-start d-block">Nombres del cliente:</label>
+                                    <input type="text" class="form-control border" name="nombres" placeholder="Nombres"
+                                        required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="apellidos" class="fw-bold text-start d-block">Apellidos del
+                                        cliente:</label>
+                                    <input type="text" class="form-control border" name="apellidos"
+                                        placeholder="Apellidos" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tipoCliente" class="fw-bold text-start d-block">Tipo de cliente:</label>
+                                    <select class="form-control border" name="tipoCliente" id="tipoCliente" required>
+                                        <option value="" selected disabled>Seleccione un tipo de cliente</option>
+                                        <option value="Empresario">Empresario</option>
+                                        <option value="Supermercado">Supermercado</option>
+                                        <option value="Tienda de Barrio">Tienda de Barrio</option>
+                                        <option value="Restaurante">Restaurante</option>
+                                        <option value="Hotel">Hotel</option>
+                                        <option value="Catering y Eventos">Catering y Eventos</option>
+                                        <option value="Venta Directa">Venta Directa</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="fw-bold text-start d-block">Email:</label>
+                                    <input type="email" class="form-control border" name="email"
+                                        placeholder="example@gmail.com" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="telefono" class="fw-bold text-start d-block">Teléfono:</label>
+                                    <input type="text" class="form-control border" name="telefono"
+                                        placeholder="Teléfono" required>
+                                </div>
+                                
+                                 <!-- <div class="col-md-6 mb-3">
+                                    <label for="idEncargado" class="fw-bold text-start d-block">Sucursal:</label>
+                                    <select class="form-control border" name="idEncargado" required>
+                                        <option value="" disabled selected>Seleccione un encargado</option>
+                                        {% for empleado in empleados %}
+                                            <option value="{{ empleado.idEmpleado }}">{{ empleado.nombres }} {{ empleado.apellidos }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div> -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="estado" class="fw-bold text-start d-block">Estado:</label>
+                                    <select class="form-control border" name="estado" required>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para editar Cliente -->
+        <div class="modal fade" id="modalEditarCliente" tabindex="-1" aria-labelledby="modalEditarClienteLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarClienteLabel">Editar Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario dentro del modal -->
+                        <form method="POST" action="" id="formEditarCliente">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="editIdentificacion" class="fw-bold text-start d-block">Identificación:</label>
+                                    <input type="text" class="form-control border" name="identificacion"
+                                        id="editIdentificacion" placeholder="Identificación del Cliente" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editNombres" class="fw-bold text-start d-block">Nombres del cliente:</label>
+                                    <input type="text" class="form-control border" name="nombres" id="editNombres"
+                                        placeholder="Nombres" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editApellidos" class="fw-bold text-start d-block">Apellidos del cliente:</label>
+                                    <input type="text" class="form-control border" name="apellidos" id="editApellidos"
+                                        placeholder="Apellidos" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editTipoCliente" class="fw-bold text-start d-block">Tipo de cliente:</label>
+                                    <select class="form-control border" name="tipoCliente" id="editTipoCliente" required>
+                                        <option value="" disabled>Seleccione un tipo de cliente</option>
+                                        <option value="Empresario">Empresario</option>
+                                        <option value="Supermercado">Supermercado</option>
+                                        <option value="Tienda de Barrio">Tienda de Barrio</option>
+                                        <option value="Restaurante">Restaurante</option>
+                                        <option value="Hotel">Hotel</option>
+                                        <option value="Catering y Eventos">Catering y Eventos</option>
+                                        <option value="Venta Directa">Venta Directa</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editEmail" class="fw-bold text-start d-block">Email:</label>
+                                    <input type="email" class="form-control border" name="email" id="editEmail"
+                                        placeholder="Email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editTelefono" class="fw-bold text-start d-block">Teléfono:</label>
+                                    <input type="tel" class="form-control border" name="telefono" id="editTelefono"
+                                        placeholder="Teléfono" required pattern="[0-9]+" title="Solo se permiten números">
+                                </div>
+                                <!-- <div class="col-md-6 mb-3">
+                                    <label for="editEncargado" class="fw-bold text-start d-block">Empleado encargado:</label>
+                                    <select class="form-control border" name="encargado" id="editEncargado" required>
+                                        {% for empleado in empleados %}
+                                            <option value="{{ empleado.idEmpleado }}" {% if obtener_clientes.idEncargado == empleado.idEmpleado %}selected{% endif %}>
+                                                {{ empleado.nombres }} {{ empleado.apellidos }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div> -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="editEstado" class="fw-bold text-start d-block">Estado:</label>
+                                    <select class="form-control border" id="editEstado" name="estado" required>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tabla de Clientes -->
+        <section class="clientes bg-light text-dark p-4 rounded shadow">
+            <h1 class="fw-bold">Clientes</h1>
+            <p class="fs-5">¡Bienvenido a la gestión de clientes de productos Fanta!</p>
+            <div class="text-start mb-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalAgregarCliente">
+                    <i class="bi bi-plus-circle"></i> Agregar Cliente
+                </button>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="container">
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <div class="table-responsive mt-3">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>identificacion</th>
+                            <th>nombres</th>
+                            <th>apellidos</th>
+                            <th>tipoCliente</th>
+                            <th>telefono</th>
+                            <!-- <th>idEncargado</th> -->
+                            <th>estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in obtener_clientes %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ cliente.identificacion }}</td>
+                            <td>{{ cliente.nombres }}</td>
+                            <td>{{ cliente.apellidos }}</td>
+                            <td>{{ cliente.tipoCliente }}</td>
+                            <td>{{ cliente.telefono }}</td>
+                            <!--  <td>{{ cliente.idEncargado }}</td> -->
+                            <td>
+                                {% if cliente.estado == "Activo" %}
+                                <span class="badge bg-success">Activo</span>
+                                {% elif cliente.estado == "Inactivo" %}
+                                <span class="badge bg-danger">Inactivo</span>
+                                {% else %}
+                                <span class="badge bg-secondary">{{ cliente.estado }}</span>
+                                {% endif %}
+                            </td>
+
+                            <td class="d-flex gap-2">
+                                <!-- Botón para editar -->
+                                <button type="button" class="btn btn-sm btn-primary me-2" data-bs-toggle="modal"
+                                    data-bs-target="#modalEditarCliente" data-idCliente="{{ cliente.idCliente}}"
+                                    data-idEncargado="{{ cliente.idEncargado }}"
+                                    data-identificacion="{{ cliente.identificacion }}"
+                                    data-nombres="{{ cliente.nombres }}" data-apellidos="{{ cliente.apellidos }}"
+                                    data-tipoCliente="{{ cliente.tipoCliente }}" data-email="{{ cliente.email }}"
+                                    data-telefono="{{ cliente.telefono }}" data-estado="{{ cliente.estado }}">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <!-- Botón para eliminar -->
+                                
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                        
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Script para manejar el modal de edición -->
+<script src="{{ url_for('static', filename='js/cliente.js') }}"></script>
+
+{% endblock %}

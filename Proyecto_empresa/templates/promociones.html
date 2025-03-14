@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Promociones - Fanta{% endblock %}
+
+{% block content %}
+<!-- Sección Hero -->
+<section class="productos-hero d-flex align-items-center justify-content-center text-center text-dark py-5">
+    <div class="container">
+        <h1 class="fw-bold animate__animated animate__fadeInDown mb-4" style="font-size: 2rem;">
+            ¡Descubre las Mejores Promociones de Fanta! 🧡
+        </h1>
+        <p class="fs-4 animate__animated animate__fadeInUp">
+            Aprovecha las ofertas y disfruta del sabor refrescante de Fanta con increíbles descuentos.
+        </p>
+    </div>
+</section>
+
+<!-- Sección de Promociones -->
+<section class="productos-container container mt-5 mb-5 py-4">
+    <div class="row row-cols-1 row-cols-md-3 g-5">
+        
+        <!-- Promoción: 2x1 en Fanta Naranja -->
+        <div class="col">
+            <div class="producto-card card border-0 shadow-lg p-4 rounded text-center">
+                <img src="{{ url_for('static', filename='img/pro1.png') }}" class="img-fluid mx-auto d-block" style="max-width: 150px;" alt="Promo 1">
+                <div class="card-body">
+                    <h4 class="card-title text-orange fw-bold">2x1 en Fanta Naranja</h4>
+                    <p class="card-text text-muted">Compra una Fanta Naranja de 2.250 y llévate otra gratis. Válido hasta el 30 de abril.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promoción: Descuento del 20% -->
+        <div class="col">
+            <div class="producto-card card border-0 shadow-lg p-4 rounded text-center">
+                <img src="{{ url_for('static', filename='img/20-descuento.png') }}" class="img-fluid mx-auto d-block" style="max-width: 250px;" alt="Promo 2">
+                <div class="card-body">
+                    <h4 class="card-title text-danger fw-bold">Descuento del 20%</h4>
+                    <p class="card-text text-muted">Obtén un 20% de descuento en cualquier presentación de Fanta en tiendas seleccionadas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promoción: Participa y Gana -->
+        <div class="col">
+            <div class="producto-card card border-0 shadow-lg p-4 rounded text-center">
+                <img src="{{ url_for('static', filename='img/2.jpg') }}" class="img-fluid mx-auto d-block" style="max-width:  350px;" alt="Promo 3">
+                <div class="card-body">
+                    <h4 class="card-title text-purple fw-bold">Participa y Gana</h4>
+                    <p class="card-text text-muted">Por cada registro de tu compra, puedes participar para ganar increíbles productos Fanta. ¡Ven, no te lo pierdas!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

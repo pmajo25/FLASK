@@ -1,1 +1,76 @@
-<h1>NOSOTROS</h1>
+{% extends "base.html" %}
+
+{% block title %}Nosotros - Fanta{% endblock %}
+
+{% block content %}
+
+<!-- Sección de Historia -->
+<section class="nosotros-historia container mt-5 mb-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="fw-bold text-orange">Nuestra Historia</h2>
+            <p class="text-muted lead">
+                Desde su creación en la década de 1940, Fanta se ha convertido en una de las bebidas más queridas en el mundo. 
+                Con su sabor inconfundible y su espíritu vibrante, ha sabido innovar y reinventarse para seguir siendo 
+                la favorita de millones de personas. Hoy, seguimos comprometidos con brindar alegría y frescura en cada sorbo.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Misión y Visión -->
+<section class="nosotros-mision-vision container my-5 py-5">
+    <div class="row">
+        <!-- Misión -->
+        <div class="col-md-6 text-center">
+            <div class="info-box p-4">
+                <img src="{{ url_for('static', filename='img/mision.png') }}" alt="Misión" class="info-icon">
+                <h3 class="fw-bold text-danger">Nuestra Misión</h3>
+                <p class="text-muted">
+                    Llevar alegría y sabor a cada rincón del mundo con experiencias refrescantes y llenas de diversión, 
+                    asegurando siempre la mejor calidad en cada botella.
+                </p>
+            </div>
+        </div>
+        <!-- Visión -->
+        <div class="col-md-6 text-center">
+            <div class="info-box p-4">
+                <img src="{{ url_for('static', filename='img/vision.png') }}" alt="Visión" class="info-icon">
+                <h3 class="fw-bold text-primary">Nuestra Visión</h3>
+                <p class="text-muted">
+                    Ser la marca líder en bebidas refrescantes, inspirando momentos felices y fomentando la creatividad 
+                    en cada uno de nuestros consumidores.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Valores -->
+<section class="nosotros-valores container my-5 py-5 text-center">
+    <h2 class="fw-bold text-purple mb-4">Nuestros Valores</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card border-0 shadow-lg p-4 rounded card-hover animated-card">
+                <img src="{{ url_for('static', filename='img/inn1.png') }}" class="card-img-top mx-auto d-block valores-img" alt="Innovación">
+                <h4 class="fw-bold mt-3 text-dark">Innovación</h4>
+                <p class="text-muted">Buscamos nuevas formas de sorprender y encantar a nuestros consumidores.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-0 shadow-lg p-4 rounded card-hover animated-card">
+                <img src="{{ url_for('static', filename='img/alegriaFa.png') }}" class="card-img-top mx-auto d-block valores-img" alt="Alegría">
+                <h4 class="fw-bold mt-3 text-dark">Alegría</h4>
+                <p class="text-muted">Transmitimos felicidad y energía positiva en cada burbuja de Fanta.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-0 shadow-lg p-4 rounded card-hover animated-card">
+                <img src="{{ url_for('static', filename='img/fan4.png') }}" class="card-img-top mx-auto d-block valores-img" alt="Compromiso">
+                <h4 class="fw-bold mt-3 text-dark">Compromiso</h4>
+                <p class="text-muted">Nos esforzamos por ofrecer productos de la más alta calidad con responsabilidad y sostenibilidad.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

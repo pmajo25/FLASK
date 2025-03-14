@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% block title %} Empleados {% endblock %}
+
+{% block content %}
+<main class="container-fluid text-dark py-5 min-vh-100">
+    <div class="container">
+        <!-- Modal para agregar Empleado -->
+        <div class="modal fade" id="modalAgregarEmpleado" tabindex="-1" aria-labelledby="modalAgregarEmpleadoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAgregarEmpleadoLabel">Agregar Nuevo Empleado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario dentro del modal -->
+                        <form method="POST" action="{{ url_for('agregar_empleado') }}">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="identificacion" class="fw-bold text-start d-block">Identificación:</label>
+                                    <input type="text" class="form-control border" name="identificacion" placeholder="Identificación" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="nombres" class="fw-bold text-start d-block">Nombres del empleado:</label>
+                                    <input type="text" class="form-control border" name="nombres" placeholder="Nombres" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="apellidos" class="fw-bold text-start d-block">Apellidos del empleado:</label>
+                                    <input type="text" class="form-control border" name="apellidos" placeholder="Apellidos" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cargo" class="fw-bold text-start d-block">Cargo:</label>
+                                    <select class="form-control border" name="cargo" required>
+                                        <option value="" disabled selected>Seleccione un cargo</option>
+                                        <option value="Gerente de Marketing">Gerente de Marketing</option>
+                                        <option value="Supervisor de Producción">Supervisor de Producción</option>
+                                        <option value="Analista de Calidad">Analista de Calidad</option>
+                                        <option value="Ejecutivo de Ventas">Ejecutivo de Ventas</option>
+                                        <option value="Representante de Atención al Cliente">Representante de Atención al Cliente</option>
+                                        <option value="Encargado de Logística">Encargado de Logística</option>
+                                        <option value="Diseñador Gráfico">Diseñador Gráfico</option>
+                                        <option value="Especialista en Redes Sociales">Especialista en Redes Sociales</option>
+                                        <option value="Gerente de Finanzas">Gerente de Finanzas</option>
+                                        <option value="Técnico de Mantenimiento">Técnico de Mantenimiento</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="idSucursal" class="fw-bold text-start d-block">Sucursal:</label>
+                                    <select class="form-control border" name="idSucursal" required>
+                                        <option value="" disabled selected>Seleccione una sucursal</option>
+                                        {% for sucursal in sucursales %}
+                                            <option value="{{ sucursal.idSucursal }}">{{ sucursal.nombre }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="salario" class="fw-bold text-start d-block">Salario:</label>
+                                    <input type="text" class="form-control border" name="salario" placeholder="Salario" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="estado" class="fw-bold text-start d-block">Estado:</label>
+                                    <select class="form-control border" name="estado" required>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Empleado</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para editar Empleado -->
+        <div class="modal fade" id="modalEditarEmpleado" tabindex="-1" aria-labelledby="modalEditarEmpleadoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarEmpleadoLabel">Editar Empleado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario dentro del modal -->
+                        <form method="POST" action="" id="formEditarEmpleado">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="editIdentificacion" class="fw-bold text-start d-block">Identificación:</label>
+                                    <input type="text" class="form-control border" name="identificacion" id="editIdentificacion" placeholder="Identificación del Empleado" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editNombres" class="fw-bold text-start d-block">Nombres del empleado:</label>
+                                    <input type="text" class="form-control border" name="nombres" id="editNombres" placeholder="Nombres" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editApellidos" class="fw-bold text-start d-block">Apellidos del empleado:</label>
+                                    <input type="text" class="form-control border" name="apellidos" id="editApellidos" placeholder="Apellidos" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editCargo" class="fw-bold text-start d-block">Cargo:</label>
+                                    <input type="text" class="form-control border" name="cargo" id="editCargo" placeholder="Cargo" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editIdSucursal" class="fw-bold text-start d-block">Sucursal:</label>
+                                    <select class="form-control border" name="idSucursal" id="editIdSucursal" required>
+                                        {% for sucursal in sucursales %}
+                                            <option value="{{ sucursal.idSucursal }}" {% if obtener_empleados.idSucursal == sucursal.idSucursal %}selected{% endif %}>
+                                                {{ sucursal.nombre }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editSalario" class="fw-bold text-start d-block">Salario:</label>
+                                    <input type="number" class="form-control border" name="salario" id="editSalario" placeholder="Salario" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="editEstado" class="fw-bold text-start d-block">Estado:</label>
+                                    <select class="form-control border" name="estado" id="editEstado" required>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tabla de Empleados -->
+        <section class="empleados bg-light text-dark p-4 rounded shadow">
+            <h1 class="fw-bold">Empleados</h1>
+            <p class="fs-5">¡Bienvenido a la gestión de empleados de productos Fanta!</p>
+            <div class="text-start mb-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpleado">
+                    <i class="bi bi-plus-circle"></i> Agregar Empleado
+                </button>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="container">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        
+            <div class="table-responsive mt-3">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Identificación</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Cargo</th>
+                            <th>Salario</th>
+                            <th>Estado</th>
+                            <th>Sucursal</th>  <!-- Nueva columna -->
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for empleado in obtener_empleados %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ empleado.identificacion }}</td>
+                            <td>{{ empleado.nombres }}</td>
+                            <td>{{ empleado.apellidos }}</td>
+                            <td>{{ empleado.cargo }}</td>
+                            <td>{{ empleado.salario }}</td>
+                            <td>
+                                {% if empleado.estado == "Activo" %}
+                                    <span class="badge bg-success">Activo</span>
+                                {% elif empleado.estado == "Inactivo" %}
+                                    <span class="badge bg-danger">Inactivo</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ empleado.estado }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ empleado.sucursal.nombre }}</td>  <!-- Mostrar el nombre de la sucursal -->
+                            <td class="d-flex gap-2">
+                                <!-- Botón para editar -->
+                                <button type="button" class="btn btn-sm btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalEditarEmpleado" 
+                                    data-idEmpleado="{{ empleado.idEmpleado}}"  
+                                    data-identificacion="{{ empleado.identificacion }}"
+                                    data-nombres="{{ empleado.nombres }}" 
+                                    data-apellidos="{{ empleado.apellidos }}"
+                                    data-cargo="{{ empleado.cargo }}" 
+                                    data-salario="{{ empleado.salario }}"
+                                    data-estado="{{ empleado.estado }}"
+                                    data-idSucursal="{{ empleado.idSucursal }}">  <!-- Pasar idSucursal -->
+                                    <i class="bi bi-pencil"></i> 
+                                </button>
+                                <!-- Botón para eliminar -->
+                                
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i> 
+                                    </button>
+                               
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Script para manejar el modal de edición -->
+<script src="{{ url_for('static', filename='js/empleado.js') }}"></script>
+
+{% endblock %}

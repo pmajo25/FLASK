@@ -1,62 +1,155 @@
-{% extends "base.html" %} 
-{% block title %} Categoría {% endblock %} 
+{% extends "base.html" %}
+{% block title %} Categorías {% endblock %}
+
 {% block content %}
-    <main class="container-fluid text-dark py-5 min-vh-100">
-        <div class="container">
-            <section class="text-center mb-4">
-                <h1 class="fw-bold">Categoría</h1>
-                <p class="fs-5">¡Bienvenido a producto por categoría Fanta!</p>
-            </section>
-
-            <section class="productos bg-light text-dark p-4 rounded shadow">
-                <h2 class="text-center">Productos</h2>
-                <div class="table-responsive mt-3">
-                    <button class="btn btn-primary mb-3">+ Añadir Producto</button>
-                    <table class="table table-striped table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>#</th>
-                                <th>Referencia</th>
-                                <th>Descripción</th>
-                                <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>FANTA-001</td>
-                                <td>Fanta Naranja 500ml</td>
-                                <td>$3,500</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>FANTA-002</td>
-                                <td>Fanta Uva 1.5L</td>
-                                <td>$7,200</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>FANTA-003</td>
-                                <td>Fanta Manzana 2L</td>
-                                <td>$9,500</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <section class="empleados bg-light text-dark p-4 rounded shadow">
-                        <h2 class="text-center">Empleados</h2>
-                    </section>
-                </div>
-                <div class="col-md-6">
-                    <section class="clientes bg-light text-dark p-4 rounded shadow">
-                        <h2 class="text-center">Clientes</h2>
-                    </section>
+<main class="container-fluid text-dark py-5 min-vh-100">
+    <div class="container">
+        <!-- Modal para agregar categoría -->
+        <div class="modal fade" id="modalAgregarCategoria" tabindex="-1" aria-labelledby="modalAgregarCategoriaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAgregarCategoriaLabel">Agregar Nueva Categoría</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario dentro del modal -->
+                        <form method="POST" action="{{ url_for('agregar_categoria') }}">
+                            <div class="text-start mb-3">
+                                <label for="nombre" class="fw-bold mb-3">Nombre de la Categoría:</label>
+                                <input type="text" class="form-control border" name="nombre" placeholder="Nombre" required>
+                            </div>
+                            <div class="text-start mb-3">
+                                <label for="descripcion" class="fw-bold mb-3">Descripción:</label>
+                                <textarea class="form-control" name="descripcion" placeholder="Descripción" rows="3" required></textarea>
+                            </div>
+                            <div class="text-start mb-3">
+                                <label for="estado" class="fw-bold">Estado:</label>
+                                <select class="form-control border" id="estado" name="estado" placeholder="Estado" required>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Categoría</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+
+        <!-- Modal para editar categoría -->
+        <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalEditarCategoriaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarCategoriaLabel">Editar Categoría</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario dentro del modal -->
+                        <form method="POST" action="" id="formEditarCategoria">
+                            <div class="text-start mb-3">
+                                <label for="editNombre" class="fw-bold mb-3">Nombre de la Categoría:</label>
+                                <input type="text" class="form-control border" name="nombre" id="editNombre" placeholder="Nombre de la Categoría" required>
+                            </div>
+                            <div class="text-start mb-3">
+                                <label for="editDescripcion" class="fw-bold mb-3">Descripcion:</label>
+                                <textarea class="form-control" name="descripcion" id="editDescripcion" rows="3" placeholder="Descripción" required></textarea>
+                            </div>
+                            <div class="text-start mb-3">
+                                <label for="editEstado" class="fw-bold">Estado:</label>
+                                <select class="form-control border" id="editEstado" name="estado" required>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de categorías -->
+        <section class="categorias bg-light text-dark p-4 rounded shadow">
+            <h1 class="fw-bold">Categorías</h1>
+            <p class="fs-5">¡Bienvenido a la gestión de categorías de productos Fanta!</p>
+            <div class="text-start mb-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">
+                    <i class="bi bi-plus-circle"></i> Agregar Categoría
+                </button>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="container">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        
+            <div class="table-responsive mt-3">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categoria in obtener_categorias %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ categoria.nombre }}</td>
+                            <td>{{ categoria.descripcion }}</td>
+                            <td>
+                                {% if categoria.estado == "Activo" %}
+                                    <span class="badge bg-success">Activo</span>
+                                {% elif categoria.estado == "Inactivo" %}
+                                    <span class="badge bg-danger">Inactivo</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ categoria.estado }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <!-- Botón para editar -->
+                                <button type="button" class="btn btn-sm btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria" 
+                                    data-id="{{ categoria.idCategoria }}" 
+                                    data-nombre="{{ categoria.nombre }}" 
+                                    data-descripcion="{{ categoria.descripcion }}"
+                                    data-estado="{{ categoria.estado }}">
+                                    <i class="bi bi-pencil"></i> 
+                                </button>
+                                <!-- Botón para eliminar -->
+                               
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i> 
+                                    </button>
+                               
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Script para manejar el modal de edición -->
+<script src="{{ url_for('static', filename='js/categoria.js') }}"></script>
+
 {% endblock %}
